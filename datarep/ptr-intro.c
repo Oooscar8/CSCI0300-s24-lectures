@@ -1,21 +1,16 @@
 #include <stdio.h>
 
-void g(int* x) {
-  *x = 42;  // dereferencing a pointer
-}
-
 void f() {
     int local = 1;
 
-    int* pointer = &local;
+    printf("value of local: %d\n", local);
+    printf("address of local: %p\n", &local);
 
-    g(pointer);
+    int* ptr = &local;
 
-    printf("address of pointer: %p\n", &pointer);
+    printf("value of ptr: %p\n", ptr);
 
-    int** pointerpointer = &pointer;
-
-    printf("value of local: %d\n", **pointerpointer);
+    //printf("value of *ptr: %d\n", *ptr);
 }
 
 int main() {
