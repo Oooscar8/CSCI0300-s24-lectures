@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "hexdump.h"
 
-typedef struct {
+typedef struct list {
 } list_t;
 
 int main() {
