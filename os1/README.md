@@ -31,8 +31,8 @@ Building
 **Linux:** WeensyOS should build natively on a Linux machine or
 virtual machine. `qemu` packages are required to run WeensyOS; on
 Ubuntu, `sudo apt install qemu qemu-system-x86` should work. A recent
-compiler is required, GCC 7 or GCC 8 if possible. Eddie uses [Ubuntu
-18.04](https://www.ubuntu.com/desktop/1804), on which GCC 7 is the
+compiler is required, GCC 7 or GCC 8 if possible. Malte and Nick use [Ubuntu
+22.04](https://www.ubuntu.com/desktop/2204), on which GCC 11 is the
 default. You can use [Clang](https://clang.llvm.org/), but only
 version 5 or later.
 
