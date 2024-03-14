@@ -153,7 +153,7 @@ run-graphic: $(QEMUIMAGEFILES) check-qemu
 	$(call run,$(QEMU_PRELOAD) $(QEMU) $(QEMUOPT) -gdb tcp::12949 $(QEMUIMG),QEMU $<)
 run-console: $(QEMUIMAGEFILES) check-qemu-console
 	@echo '* Run `gdb -x build/demoos.gdb` to connect gdb to qemu.' 1>&2
-	$(call run,$(QEMU) $(QEMUOPT) -curses -gdb tcp::12949 $(QEMUIMG),QEMU $<)
+	$(call run,$(QEMU) $(QEMUOPT) -display curses -gdb tcp::12949 $(QEMUIMG),QEMU $<)
 run-monitor: $(QEMUIMAGEFILES) check-qemu
 	$(call run,$(QEMU_PRELOAD) $(QEMU) $(QEMUOPT) -monitor stdio $(QEMUIMG),QEMU $<)
 run-gdb: run-gdb-$(QEMUDISPLAY)
