@@ -1,5 +1,5 @@
 PROGRAMS = fork1 fork2 fork2b fork3 forkmix-syscall forkmix-stdio \
-           manyfork myecho runmyecho forkmyecho spawnmyecho \
+           manyfork myecho execmyecho forkexecmyecho spawnmyecho \
            waitdemo selfpipe childpipe
 
 all: $(PROGRAMS)

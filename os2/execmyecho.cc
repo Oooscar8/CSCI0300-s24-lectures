@@ -8,10 +8,10 @@ int main() {
         "arguments.",
         nullptr
     };
-    fprintf(stderr, "About to exec myecho from pid %d\n", getpid());
+    fprintf(stderr, "[execmyecho] About to exec myecho in pid %d\n", getpid());
 
     int r = execv("./myecho", (char**) args);
 
-    fprintf(stderr, "Finished execing myecho from pid %d; status %d\n",
-            getpid(), r);
+    fprintf(stderr, "[execmyecho] Finished execing myecho in pid %d;"
+            "status %d\n", getpid(), r);
 }
