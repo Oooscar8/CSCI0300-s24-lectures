@@ -7,7 +7,7 @@
 void f() {
     char local_st[] = "We <3 systems";
 
-    hexdump(local_st, 13);
+    hexdump(local_st, 14);
 }
 
 int main() {

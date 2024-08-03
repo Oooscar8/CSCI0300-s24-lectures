@@ -16,6 +16,7 @@ void f() {
     hexdump(&const_global_ch, 1);
     hexdump(&local_ch, 1);
     hexdump(allocated_ch, 1);
+    free(allocated_ch);
 }
 
 int main() {
