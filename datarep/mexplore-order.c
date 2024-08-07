@@ -8,9 +8,9 @@
 
 void f() {
   int i1 = 1;
+  char c1 = 'A';
   int i2 = 2;
   int i3 = 3;
-  char c1 = 'A';
   char c2 = 'B';
   char c3 = 'C';
 
