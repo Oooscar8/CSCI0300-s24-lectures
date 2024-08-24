@@ -30,7 +30,6 @@ proc* current;                  // pointer to currently executing proc
 #define HZ 100                  // timer interrupt frequency (interrupts/sec)
 static std::atomic<unsigned long> ticks; // # timer interrupts so far
 
-
 // Memory state
 //    Information about physical page with address `pa` is stored in
 //    `pages[pa / PAGESIZE]`. In the handout code, each `pages` entry
@@ -64,9 +63,14 @@ void kernel(const char* command) {
     for (vmiter it(kernel_pagetable);
          it.va() < MEMSIZE_PHYSICAL;
          it += PAGESIZE) {
-        if (it.va() != 0) {
+        if (it.va() >= PROC_START_ADDR || it.va() == CONSOLE_ADDR) {
+            // process memory, console (for memory-mapped I/O) accessible to userspace
             it.map(it.va(), PTE_P | PTE_W | PTE_U);
+        } else if (it.va() != 0) {
+            // kernel memory, NOT accessible to userspace
+            it.map(it.va(), PTE_P | PTE_W);
         } else {
+            // null page (for null pointer derefs) mapped with no permissions
             it.map(it.va(), 0);
         }
     }
@@ -189,6 +193,10 @@ void exception(regstate* regs) {
               entity, current->pid, addr, operation, problem, regs->reg_rip);
         goto unhandled;
     }
+
+    case 32:
+        lapicstate::get().ack(); // re-enable timer interrupt
+        schedule(); // let something else run
 
     default:
     unhandled:
